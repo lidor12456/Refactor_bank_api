@@ -65,3 +65,30 @@ export const transferCash = async (req, res) => {
     res.status(404).send({ message: error.message });
   }
 };
+
+export const depotsCash = async (req, res) => {
+  const { id } = req.params;
+  const DepotsCash = +req.body.cash;
+  try {
+    let userDepots = await bankUsers.findById(id);
+    userDepots = await bankUsers.findByIdAndUpdate(
+      id,
+      { cash: userDepots.cash + DepotsCash },
+      { new: true }
+    );
+    res.status(201).send(userDepots);
+  } catch {
+    res.status(404).send({ message: error.message });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    await bankUsers.findByIdAndRemove(id);
+    res.status(200).send({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(404).send({ message: error.message });
+  }
+};
