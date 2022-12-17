@@ -5,11 +5,10 @@ import { indexRoute } from "./routes/index.routes.js";
 
 const app = express();
 
+app.use(cors({ credentials: true }));
 app.use(express.json());
 
 app.use("/api", indexRoute);
-
-app.use(cors());
 
 const PORT = 5000;
 
