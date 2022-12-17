@@ -18,4 +18,4 @@ indexRoute.post("/adduser", cors(), addUser);
 indexRoute.put("/update/:id", cors(), updateUserById);
 indexRoute.put("/depots/:id", cors(), depotsCash);
 indexRoute.post("/transfercash/:firstId/:secondId", cors(), transferCash);
-indexRoute.delete("delete/:id", cors(), deleteUser);
+indexRoute.delete("/delete/:id", cors(), deleteUser);
