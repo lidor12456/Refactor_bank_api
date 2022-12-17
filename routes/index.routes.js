@@ -12,16 +12,6 @@ import {
 import { userAuth } from "../middlewares/auth.middleware.js";
 export const indexRoute = Router();
 
-const corsOpts = {
-  origin: "*",
-
-  methods: ["GET", "POST"],
-
-  allowedHeaders: ["Content-Type"],
-};
-
-app.use(cors(corsOpts));
-
 indexRoute.get("/allusers", cors(), getAllUsers);
 indexRoute.get("/:id", cors(), getUserById);
 indexRoute.post("/adduser", cors(), addUser);
